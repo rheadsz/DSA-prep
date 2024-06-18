@@ -51,19 +51,30 @@ class LinkedList:
         new_node = Node(new_node_data)
         if self.head is None:
             print("Linked list is empty")
+            return
         #check if we are adding before the first item in the LL
         if self.head.data == given_node_data:
             new_node.ref = self.head
             self.head = new_node
+            return
         else: #if we are adding between other nodes
             n = self.head
             while n is not None:
                 if n.ref.data == given_node_data:
-                    new_node.ref = n.ref
+                    new_node.ref = n.ref 
                     n.ref = new_node
                     break
                 else:
                     n = n.ref
+
+    def delete_begin(self):
+        #check if LL is empty
+        if self.head is None:
+            print("Linked list is empty")
+            return
+        else:
+            self.head = self.head.ref
+
 
 
 LL1 = LinkedList()
@@ -79,4 +90,6 @@ LL1.add_after(2,28)
 LL1.add_after(6,28)
 LL1.add_before(6,7)
 LL1.add_before(20,8)
+LL1.printLL()
+LL1.delete_begin()
 LL1.printLL()
